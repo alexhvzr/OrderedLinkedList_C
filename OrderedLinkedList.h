@@ -15,7 +15,7 @@ using namespace std;
 
 
 template<class T>
-class OrderedLinkedList : public LinkedList<T> {
+class OrderedLinkedList : private LinkedList<T> {
 //friend class LinkedList;
 private:
     OrderedLinkedList(const OrderedLinkedList &) = delete; //copy constructor

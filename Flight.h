@@ -8,6 +8,7 @@
 using namespace std;
 #include "Passenger.h"
 #include <iostream>
+#include <algorithm>
 
 int NUMBER_OF_FLIGHTS = 4;
 class Flight{
@@ -26,7 +27,6 @@ public:
     void displayPassengers();
     void destroylist();
     ~Flight();
-//    string displayPassengers();
 
 };
 Flight::Flight(){
@@ -39,13 +39,17 @@ int Flight::getFlightNum() const {
 void Flight::setFlightNum(int &f) {
     if(f== 100 || f == 200 || f == 300 || f == 400) {
         flightNum = f;
-        
     } else {
         throw MyException("Flight not found",-1);
 
     }
 }
-
+bool validateName(string name){
+    return any_of(name.begin(), name.end(), ::isdigit);
+}
+bool validateNumber(string phone){
+    return any_of(phone.begin(), phone.end(), ::isalpha);
+}
 void Flight::addPassenger(Passenger& pass ) {
     passengers->insertSorted(pass);
 }
